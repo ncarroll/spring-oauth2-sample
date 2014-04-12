@@ -10,7 +10,7 @@ apply plugin: "spring-boot"
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-version = '1.0'
+version = '0.1.0'
 
 repositories {
     mavenCentral()
@@ -27,11 +27,6 @@ dependencies {
     //testCompile("com.jayway.jsonpath:json-path:0.8.1")
     //testCompile("com.jayway.jsonpath:json-path-assert:0.8.1")
     testCompile 'junit:junit:4.11'
-}
-
-jar {
-    baseName = 'app-server'
-    version = "$version"
 }
 
 task wrapper(type: Wrapper) { gradleVersion = "1.11" }
