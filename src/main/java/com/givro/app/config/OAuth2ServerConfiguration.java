@@ -34,10 +34,8 @@ public class OAuth2ServerConfiguration {
         public void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated();
+                    .antMatchers("/").permitAll()
+                    .anyRequest().authenticated();
         }
     }
 
