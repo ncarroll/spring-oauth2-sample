@@ -4,3 +4,22 @@ server:
 spring:
   application.name: givro
   main.show_banner: false
+  profiles.active: development
+  datasource:
+    url: jdbc:hsqldb:file:build/db/app-db;shutdown=true
+    username: sa
+    driverClassName: org.hsqldb.jdbc.JDBCDriver
+
+---
+
+spring:
+  profiles: development
+  datasource:
+    url: jdbc:hsqldb:file:build/db/app-db
+    username: sa
+    driverClassName: org.hsqldb.jdbc.JDBCDriver
+
+---
+
+spring:
+    profiles: production

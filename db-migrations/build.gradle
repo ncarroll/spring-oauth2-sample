@@ -18,9 +18,11 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    compile 'org.hsqldb:hsqldb:2.3.2'
+}
+
 flyway {
-    driver = 'org.hsqldb.jdbcDriver'
-    url = 'jdbc:hsqldb:file:${project.build.directory}/db/flyway_sample;shutdown=true'
+    url = "jdbc:hsqldb:file:${rootProject.buildDir}/db/app-db;shutdown=true"
     user = 'SA'
-    password = 'mySecretPwd'
 }
