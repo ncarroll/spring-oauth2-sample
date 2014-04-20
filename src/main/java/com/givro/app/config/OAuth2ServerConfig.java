@@ -15,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.InMemoryTokenStore;
+import org.springframework.security.oauth2.provider.token.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
 @Configuration
@@ -54,6 +55,7 @@ public class OAuth2ServerConfig {
 
         @Bean
         public TokenStore tokenStore() {
+            //new JdbcTokenStore();
             return new InMemoryTokenStore();
         }
 

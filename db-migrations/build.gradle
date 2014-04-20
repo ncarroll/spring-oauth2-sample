@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.googlecode.flyway:flyway-gradle-plugin:2.3.1"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'flyway'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+flyway {
+    driver = 'org.hsqldb.jdbcDriver'
+    url = 'jdbc:hsqldb:file:${project.build.directory}/db/flyway_sample;shutdown=true'
+    user = 'SA'
+    password = 'mySecretPwd'
+}
