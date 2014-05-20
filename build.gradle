@@ -2,14 +2,18 @@ buildscript {
     repositories {
         maven { url "http://repo.spring.io/libs-release" }
     }
-    dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE") }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.0.M1")
+        classpath("org.flywaydb:flyway-gradle-plugin:3.0")
+    }
 }
 
 apply plugin: 'java'
 apply plugin: "spring-boot"
+apply plugin: 'flyway'
 
 sourceCompatibility = 1.8
-version = '0.1.0'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -21,16 +25,22 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-security'
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
 
-    compile 'org.springframework.security.oauth:spring-security-oauth2:2.0.0.RC2'
+    compile 'org.springframework.security.oauth:spring-security-oauth2:2.0.0.RELEASE'
 
     compile 'com.fasterxml.jackson.core:jackson-databind'
     compile 'org.yaml:snakeyaml:1.13'
     compile 'org.hsqldb:hsqldb:2.3.2'
+    compile 'org.flywaydb:flyway-core:3.0'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile("com.jayway.jsonpath:json-path:0.8.1")
     testCompile("com.jayway.jsonpath:json-path-assert:0.8.1")
     testCompile 'junit:junit:4.11'
+}
+
+flyway {
+    url = "jdbc:hsqldb:file:${rootProject.buildDir}/db/app-db;shutdown=true"
+    user = 'SA'
 }
 
 task wrapper(type: Wrapper) { gradleVersion = "1.11" }

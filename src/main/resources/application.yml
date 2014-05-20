@@ -9,6 +9,11 @@ spring:
     url: jdbc:hsqldb:file:build/db/app-db;shutdown=true
     username: sa
     driverClassName: org.hsqldb.jdbc.JDBCDriver
+  jpa:
+    generate-ddl: false
+    hibernate.ddl-auto: none
+
+flyway.locations: db/migration
 
 ---
 
