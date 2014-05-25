@@ -32,6 +32,12 @@ dependencies {
     compile 'org.hsqldb:hsqldb:2.3.2'
     compile 'org.flywaydb:flyway-core:3.0'
 
+    compile 'org.apache.tomcat.embed:tomcat-embed-core:8.0.5'
+    compile 'org.apache.tomcat.embed:tomcat-embed-el:8.0.5'
+    compile 'org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.5'
+    compile 'org.apache.tomcat:tomcat-jdbc:8.0.5'
+    compile 'org.apache.tomcat:tomcat-juli:8.0.5'
+
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile("com.jayway.jsonpath:json-path:0.8.1")
     testCompile("com.jayway.jsonpath:json-path-assert:0.8.1")
