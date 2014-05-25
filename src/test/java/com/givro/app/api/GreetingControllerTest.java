@@ -1,7 +1,6 @@
 package com.givro.app.api;
 
 import com.givro.Application;
-import com.givro.app.api.GreetingController;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -9,14 +8,16 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
-import org.springframework.security.web.FilterChainProxy;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import javax.servlet.Filter;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -26,14 +27,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = Application.class)
+@ActiveProfiles("test")
 public class GreetingControllerTest {
 
     @Autowired
     WebApplicationContext context;
 
     @Autowired
-    private FilterChainProxy springSecurityFilterChain;
+    private Filter springSecurityFilterChain;
 
     @InjectMocks
     GreetingController controller;
@@ -43,8 +45,11 @@ public class GreetingControllerTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mvc = MockMvcBuilders.webAppContextSetup(context)
-                .addFilter(springSecurityFilterChain)
+
+        mvc = MockMvcBuilders
+                .webAppContextSetup(context)
+                .defaultRequest(get("/"))
+                .addFilters(springSecurityFilterChain)
                 .build();
     }
 

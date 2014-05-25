@@ -1,0 +1,21 @@
+server:
+  port: 9000
+
+spring:
+  application.name: givro
+  main.show_banner: false
+  profiles.active: development
+  jpa:
+    generate-ddl: false
+    hibernate.ddl-auto: none
+
+flyway.locations: classpath:db/migration
+
+---
+
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:hsqldb:file:build/db/app-test-db
+    username: sa
+    driverClassName: org.hsqldb.jdbc.JDBCDriver
