@@ -26,3 +26,12 @@ If the request is successful, you will see the following JSON response:
 ```
 {"id":1,"content":"Hello, World!"}
 ```
+
+## Todo
+
+* Sign up	POST	/signup
+* Sign in	POST	/signin
+* Sign out	POST	/signout
+* Users		GET	/v1/api/users
+* User profile	GET	/v1/api/users/{id}
+* Admin		GET	/admin
